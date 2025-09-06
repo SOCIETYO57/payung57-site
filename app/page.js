@@ -1,9 +1,10 @@
 "use client";
+
 import React from "react";
 import { motion } from "framer-motion";
-import { button } from "@/components/ui/button";
-import { card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { input } from "@/components/ui/input";
+import Button from "@/components/ui/Button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
+import Input from "@/components/ui/Input";
 import { ShoppingCart, Instagram, Facebook, Phone, Mail, Sparkles, Star } from "lucide-react";
 
 // --- Mock data ---
