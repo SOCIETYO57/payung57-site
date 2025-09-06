@@ -3,7 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { button } from "@/components/ui/button";
 import { card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { input } from "@/components/ui/Input";
+import { input } from "@/components/ui/input";
 import { ShoppingCart, Instagram, Facebook, Phone, Mail, Sparkles, Star } from "lucide-react";
 
 // --- Mock data ---
