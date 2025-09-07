@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Payung57 Site",
+  title: "PAYUNG57 SOCIETY",
   description: "Website Next.js dengan App Router",
 };
 
