@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/Button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
-import Input from "@/components/ui/Input";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import { ShoppingCart, Instagram, Facebook, Phone, Mail, Sparkles, Star } from "lucide-react";
 import Image from "next/image";
 
@@ -27,20 +27,17 @@ const Logo = () => (
     <div className="h-9 w-9 rounded-2xl bg-gradient-to-br from-purple-500 to-indigo-600 grid place-items-center shadow-lg">
       <Sparkles className="h-5 w-5 text-white" />
     </div>
-    <span className="font-black tracking-wide text-xl">PAYUNG<span className="text-purple-600">57</span></span>
+    <span className="font-black tracking-wide text-xl">
+      PAYUNG<span className="text-purple-600">57</span>
+    </span>
   </div>
 );
 
 // --- Product Card ---
-const ProductCard = ({ p }) => (
+const ProductCard = ({ p }: { p: any }) => (
   <Card className="overflow-hidden rounded-2xl shadow-sm hover:shadow-lg transition-shadow">
     <div className="aspect-[4/3] w-full relative bg-gradient-to-br from-neutral-200 to-neutral-100">
-      <Image
-        src={p.img}
-        alt={p.title}
-        fill
-        className="object-cover"
-      />
+      <Image src={p.img} alt={p.title} fill className="object-cover" />
     </div>
     <CardHeader className="pb-2">
       <CardTitle className="text-base font-semibold">{p.title}</CardTitle>
@@ -102,9 +99,11 @@ export default function Page() {
 
           <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.1 }} className="relative">
             <div className="rounded-3xl border shadow-xl overflow-hidden">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1600&auto=format&fit=crop"
                 alt="Hero visual"
+                width={1600}
+                height={900}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -147,10 +146,22 @@ export default function Page() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="rounded-3xl overflow-hidden border shadow-sm">
-              <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop" alt="Studio" className="h-full w-full object-cover" />
+              <Image
+                src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop"
+                alt="Studio"
+                width={600}
+                height={600}
+                className="h-full w-full object-cover"
+              />
             </div>
             <div className="rounded-3xl overflow-hidden border shadow-sm">
-              <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1200&auto=format&fit=crop" alt="Team" className="h-full w-full object-cover" />
+              <Image
+                src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1200&auto=format&fit=crop"
+                alt="Team"
+                width={600}
+                height={600}
+                className="h-full w-full object-cover"
+              />
             </div>
           </div>
         </div>
@@ -220,4 +231,3 @@ export default function Page() {
     </div>
   );
 }
-
