@@ -34,10 +34,15 @@ const Logo = () => (
 );
 
 // --- Product Card ---
-const ProductCard = ({ p }: { p: any }) => (
+const ProductCard = ({ p }) => (
   <Card className="overflow-hidden rounded-2xl shadow-sm hover:shadow-lg transition-shadow">
     <div className="aspect-[4/3] w-full relative bg-gradient-to-br from-neutral-200 to-neutral-100">
-      <Image src={p.img} alt={p.title} fill className="object-cover" />
+      <Image
+        src={p.img}
+        alt={p.title}
+        fill
+        className="object-cover"
+      />
     </div>
     <CardHeader className="pb-2">
       <CardTitle className="text-base font-semibold">{p.title}</CardTitle>
@@ -50,7 +55,6 @@ const ProductCard = ({ p }: { p: any }) => (
     </CardContent>
   </Card>
 );
-
 // --- Halaman utama ---
 export default function Page() {
   return (
