@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import Input from "@/components/ui/Input";
 import { ShoppingCart, Instagram, Facebook, Phone, Mail, Sparkles, Star } from "lucide-react";
+import Image from "next/image";
 
 // --- Mock data ---
 const products = [
@@ -33,8 +34,13 @@ const Logo = () => (
 // --- Product Card ---
 const ProductCard = ({ p }) => (
   <Card className="overflow-hidden rounded-2xl shadow-sm hover:shadow-lg transition-shadow">
-    <div className="aspect-[4/3] w-full bg-gradient-to-br from-neutral-200 to-neutral-100">
-      <img src={p.img} alt={p.title} className="h-full w-full object-cover" />
+    <div className="aspect-[4/3] w-full relative bg-gradient-to-br from-neutral-200 to-neutral-100">
+      <Image
+        src={p.img}
+        alt={p.title}
+        fill
+        className="object-cover"
+      />
     </div>
     <CardHeader className="pb-2">
       <CardTitle className="text-base font-semibold">{p.title}</CardTitle>
