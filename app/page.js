@@ -98,20 +98,21 @@ export default function Page() {
       </section>
 
       {/* Products */}
-      <section id="products" className="mx-auto max-w-6xl px-4 py-16">
-        <div className="mb-8 flex items-end justify-between">
-          <div>
-            <h2 className="text-2xl md:text-4xl font-black">Produk Unggulan</h2>
-            <p className="text-neutral-600">Kualitas niat, detail rapi, siap dipakai atau dipajang.</p>
-          </div>
-          <a href="#" className="px-4 py-2 rounded-2xl border hover:bg-neutral-100">Lihat Semua</a>
+<section id="products" className="mx-auto max-w-6xl px-4 py-16">
+  <h2 className="text-3xl font-black mb-8">Produk Unggulan</h2>
+  <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    {products.map(p => (
+      <div key={p.id} className="overflow-hidden rounded-2xl shadow-lg hover:scale-105 transform transition">
+        <div className="relative h-48">
+          <Image src={p.img} alt={p.title} fill className="object-cover" />
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((p) => (
-            <ProductCard key={p.id} p={p} />
-          ))}
+        <div className="p-4">
+          <h3 className="font-semibold text-center">{p.title}</h3>
         </div>
-      </section>
+      </div>
+    ))}
+  </div>
+</section>
 
       {/* About */}
       <section id="about" className="relative bg-neutral-50 border-y">
