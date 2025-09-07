@@ -1,63 +1,48 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import Input from "@/components/ui/input";
-import { ShoppingCart, Instagram, Facebook, Phone, Mail, Sparkles, Star } from "lucide-react";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { Star, Instagram, Facebook, Phone, Mail } from "lucide-react";
 
-// --- Mock data ---
+// Dummy data produk
 const products = [
-  { id: 1, title: "Figure 1/7 – Classic", price: "Rp 1.299.000", img: "https://images.unsplash.com/photo-1605165480434-0c8d2a97bc93?q=80&w=1200&auto=format&fit=crop" },
-  { id: 2, title: "Streetwear Tee – Core", price: "Rp 179.000", img: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1200&auto=format&fit=crop" },
-  { id: 3, title: "Hoodie – Night Shade", price: "Rp 389.000", img: "https://images.unsplash.com/photo-1516826957135-700dedea698c?q=80&w=1200&auto=format&fit=crop" },
-  { id: 4, title: "Acc – Necklace Payung57", price: "Rp 149.000", img: "https://images.unsplash.com/photo-1520975682031-88c0d4b3c2a6?q=80&w=1200&auto=format&fit=crop" },
+  { id: 1, title: "Produk 1", img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600" },
+  { id: 2, title: "Produk 2", img: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=600" },
+  { id: 3, title: "Produk 3", img: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=600" },
+  { id: 4, title: "Produk 4", img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=600" },
 ];
 
+// Dummy data testimoni
 const testimonials = [
-  { name: "Naya", text: "Detail produk Payung57 gokil sih—kualitasnya premium, harga masih masuk akal!" },
-  { name: "Bima", text: "Packaging rapi, dateng cepet. Brand lokal rasa internasional." },
-  { name: "Saka", text: "Desainnya clean tapi standout. Fix jadi langganan." },
+  { text: "Produk bagus banget!", name: "Andi" },
+  { text: "Kualitas mantap, recommended!", name: "Budi" },
+  { text: "Pengiriman cepat, puas belanja di sini.", name: "Citra" },
 ];
 
-// --- Logo ---
-const Logo = () => (
-  <div className="flex items-center gap-2">
-    <div className="h-9 w-9 rounded-2xl bg-gradient-to-br from-purple-500 to-indigo-600 grid place-items-center shadow-lg">
-      <Sparkles className="h-5 w-5 text-white" />
-    </div>
-    <span className="font-black tracking-wide text-xl">
-      PAYUNG<span className="text-purple-600">57</span>
-    </span>
-  </div>
-);
+// --- Komponen kecil ---
+function Logo() {
+  return <h1 className="text-xl font-bold text-purple-600">Payung57</h1>;
+}
 
-// --- Product Card ---
-const ProductCard = ({ p }) => (
-  <Card className="overflow-hidden rounded-2xl shadow-sm hover:shadow-lg transition-shadow">
-    <div className="aspect-[4/3] w-full relative bg-gradient-to-br from-neutral-200 to-neutral-100">
-      <Image src={p.img} alt={p.title} fill className="object-cover" />
+function ProductCard({ p }) {
+  return (
+    <div className="overflow-hidden rounded-2xl shadow-sm border hover:shadow-lg transition-shadow">
+      <div className="aspect-[4/3] w-full relative">
+        <Image src={p.img} alt={p.title} fill className="object-cover" />
+      </div>
+      <div className="p-4">
+        <h4 className="font-semibold">{p.title}</h4>
+      </div>
     </div>
-    <CardHeader className="pb-2">
-      <CardTitle className="text-base font-semibold">{p.title}</CardTitle>
-    </CardHeader>
-    <CardContent className="pb-6 flex items-center justify-between">
-      <span className="font-bold">{p.price}</span>
-      <Button className="rounded-2xl" size="sm">
-        <ShoppingCart className="mr-2 h-4 w-4" /> Beli
-      </Button>
-    </CardContent>
-  </Card>
-);
+  );
+}
 
 // --- Halaman utama ---
 export default function Page() {
   return (
     <div className="min-h-screen bg-white text-neutral-900">
       {/* Navbar */}
-      <header className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/70 bg-white/80 border-b">
+      <header className="sticky top-0 z-50 backdrop-blur bg-white/80 border-b">
         <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
           <Logo />
           <nav className="hidden md:flex items-center gap-6 text-sm">
@@ -67,9 +52,7 @@ export default function Page() {
             <a href="#contact" className="hover:text-purple-600">Kontak</a>
           </nav>
           <div className="flex items-center gap-2">
-            <Button className="rounded-2xl" asChild>
-              <a href="#shop">Shop Now</a>
-            </Button>
+            <a href="#shop" className="px-4 py-2 rounded-2xl bg-purple-600 text-white hover:bg-purple-700">Shop Now</a>
           </div>
         </div>
       </header>
@@ -87,10 +70,8 @@ export default function Page() {
               Payung57 menghadirkan produk yang clean, tajam, dan relevan untuk keseharian. Dari figure collectible hingga streetwear—semua dengan kualitas yang niat.
             </p>
             <div className="flex flex-wrap gap-3" id="shop">
-              <Button className="rounded-2xl">Belanja Sekarang</Button>
-              <Button variant="outline" className="rounded-2xl" asChild>
-                <a href="#about">Pelajari Brand</a>
-              </Button>
+              <button className="px-4 py-2 rounded-2xl bg-purple-600 text-white hover:bg-purple-700">Belanja Sekarang</button>
+              <a href="#about" className="px-4 py-2 rounded-2xl border hover:bg-neutral-100">Pelajari Brand</a>
             </div>
             <div className="mt-8 flex items-center gap-5 text-neutral-600">
               <div className="flex items-center gap-1"><Star className="h-4 w-4" />1000+ pelanggan puas</div>
@@ -101,7 +82,7 @@ export default function Page() {
           <motion.div initial={{ opacity: 0, scale: 0.98 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: 0.1 }} className="relative">
             <div className="rounded-3xl border shadow-xl overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1600&auto=format&fit=crop"
+                src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1600"
                 alt="Hero visual"
                 width={1600}
                 height={900}
@@ -123,7 +104,7 @@ export default function Page() {
             <h2 className="text-2xl md:text-4xl font-black">Produk Unggulan</h2>
             <p className="text-neutral-600">Kualitas niat, detail rapi, siap dipakai atau dipajang.</p>
           </div>
-          <Button variant="outline" className="rounded-2xl">Lihat Semua</Button>
+          <a href="#" className="px-4 py-2 rounded-2xl border hover:bg-neutral-100">Lihat Semua</a>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {products.map((p) => (
@@ -148,7 +129,7 @@ export default function Page() {
           <div className="grid grid-cols-2 gap-4">
             <div className="rounded-3xl overflow-hidden border shadow-sm">
               <Image
-                src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop"
+                src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200"
                 alt="Studio"
                 width={600}
                 height={600}
@@ -157,7 +138,7 @@ export default function Page() {
             </div>
             <div className="rounded-3xl overflow-hidden border shadow-sm">
               <Image
-                src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1200&auto=format&fit=crop"
+                src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1200"
                 alt="Team"
                 width={600}
                 height={600}
@@ -173,12 +154,10 @@ export default function Page() {
         <h3 className="text-2xl md:text-4xl font-black mb-8">Apa Kata Mereka</h3>
         <div className="grid md:grid-cols-3 gap-6">
           {testimonials.map((t, i) => (
-            <Card key={i} className="rounded-3xl">
-              <CardContent className="p-6">
-                <p className="text-neutral-700 mb-4">“{t.text}”</p>
-                <p className="font-semibold">{t.name}</p>
-              </CardContent>
-            </Card>
+            <div key={i} className="rounded-3xl border shadow-sm p-6">
+              <p className="text-neutral-700 mb-4">“{t.text}”</p>
+              <p className="font-semibold">{t.name}</p>
+            </div>
           ))}
         </div>
       </section>
@@ -192,29 +171,23 @@ export default function Page() {
               Dapatkan info rilis terbaru, diskon eksklusif, dan drop terbatas dari Payung57. Masukkan email kamu.
             </p>
             <div className="flex gap-3 max-w-md">
-              <Input placeholder="Alamat email" className="bg-white text-neutral-900 rounded-2xl" />
-              <Button className="rounded-2xl">Subscribe</Button>
+              <input placeholder="Alamat email" className="px-4 py-2 bg-white text-neutral-900 rounded-2xl border flex-1" />
+              <button className="px-4 py-2 rounded-2xl bg-purple-600 text-white hover:bg-purple-700">Subscribe</button>
             </div>
           </div>
           <div className="grid sm:grid-cols-3 gap-4">
-            <Card className="bg-white/5 border-white/10 rounded-3xl">
-              <CardContent className="p-6">
-                <p className="text-sm text-neutral-300">Instagram</p>
-                <a href="#" className="mt-1 inline-flex items-center gap-2 font-semibold">@payung57 <Instagram className="h-4 w-4" /></a>
-              </CardContent>
-            </Card>
-            <Card className="bg-white/5 border-white/10 rounded-3xl">
-              <CardContent className="p-6">
-                <p className="text-sm text-neutral-300">Facebook</p>
-                <a href="#" className="mt-1 inline-flex items-center gap-2 font-semibold">Payung57 <Facebook className="h-4 w-4" /></a>
-              </CardContent>
-            </Card>
-            <Card className="bg-white/5 border-white/10 rounded-3xl">
-              <CardContent className="p-6">
-                <p className="text-sm text-neutral-300">WhatsApp</p>
-                <a href="#" className="mt-1 inline-flex items-center gap-2 font-semibold">Hubungi Kami <Phone className="h-4 w-4" /></a>
-              </CardContent>
-            </Card>
+            <div className="bg-white/5 border border-white/10 rounded-3xl p-6">
+              <p className="text-sm text-neutral-300">Instagram</p>
+              <a href="#" className="mt-1 inline-flex items-center gap-2 font-semibold">@payung57 <Instagram className="h-4 w-4" /></a>
+            </div>
+            <div className="bg-white/5 border border-white/10 rounded-3xl p-6">
+              <p className="text-sm text-neutral-300">Facebook</p>
+              <a href="#" className="mt-1 inline-flex items-center gap-2 font-semibold">Payung57 <Facebook className="h-4 w-4" /></a>
+            </div>
+            <div className="bg-white/5 border border-white/10 rounded-3xl p-6">
+              <p className="text-sm text-neutral-300">WhatsApp</p>
+              <a href="#" className="mt-1 inline-flex items-center gap-2 font-semibold">Hubungi Kami <Phone className="h-4 w-4" /></a>
+            </div>
           </div>
         </div>
       </section>
