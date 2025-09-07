@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export', // penting! biar hasil ke folder out
   images: {
-    unoptimized: true, // Cloudflare Pages ga support image optimization Next.js
+    unoptimized: true, // bisa hapus kalau mau image optimization jalan
   },
 };
 
