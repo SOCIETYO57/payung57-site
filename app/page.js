@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/Button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
+import Input from "@/components/ui/Input";
 import { ShoppingCart, Instagram, Facebook, Phone, Mail, Sparkles, Star } from "lucide-react";
 import Image from "next/image";
 
@@ -37,12 +37,7 @@ const Logo = () => (
 const ProductCard = ({ p }) => (
   <Card className="overflow-hidden rounded-2xl shadow-sm hover:shadow-lg transition-shadow">
     <div className="aspect-[4/3] w-full relative bg-gradient-to-br from-neutral-200 to-neutral-100">
-      <Image
-        src={p.img}
-        alt={p.title}
-        fill
-        className="object-cover"
-      />
+      <Image src={p.img} alt={p.title} fill className="object-cover" />
     </div>
     <CardHeader className="pb-2">
       <CardTitle className="text-base font-semibold">{p.title}</CardTitle>
@@ -55,6 +50,7 @@ const ProductCard = ({ p }) => (
     </CardContent>
   </Card>
 );
+
 // --- Halaman utama ---
 export default function Page() {
   return (
