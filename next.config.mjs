@@ -1,10 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [
-      { protocol: "https", hostname: "images.unsplash.com" },
-    ],
+    domains: ["images.unsplash.com"], // biar bisa load gambar dari Unsplash
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;
